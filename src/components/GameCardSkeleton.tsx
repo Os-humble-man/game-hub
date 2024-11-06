@@ -4,7 +4,7 @@ import { SkeletonText } from "./ui/skeleton";
 
 function GameCardSkeleton() {
   return (
-    <Card.Root width={"300px"} overflow={"hidden"} borderRadius={10}>
+    <Card.Root>
       <Skeleton height={"200px"} />
       <CardBody>
         <SkeletonText />
