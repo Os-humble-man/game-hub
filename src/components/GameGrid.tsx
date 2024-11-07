@@ -13,7 +13,9 @@ interface Props {
 export default function GameGrid({ selectedGenre }: Props) {
   const { error, data, isLoading } = useGames(selectedGenre);
   const skeletons = [1, 2, 3, 4, 5, 6];
-  const filteredGame = filteredGamesByGenre(data || [], selectedGenre?.id ?? 0);
+  const filteredGame = selectedGenre
+    ? filteredGamesByGenre(data, selectedGenre.id)
+    : data;
 
   return (
     <>
