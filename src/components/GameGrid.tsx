@@ -4,6 +4,7 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import { GameCardContainer } from "./GameCardContainer";
 import { Genre } from "@/hooks/useGenres";
+import filteredGamesByGenre from "@/services/filter-games";
 
 interface Props {
   selectedGenre: Genre | null;
@@ -12,11 +13,7 @@ interface Props {
 export default function GameGrid({ selectedGenre }: Props) {
   const { error, data, isLoading } = useGames(selectedGenre);
   const skeletons = [1, 2, 3, 4, 5, 6];
-  const filteredGame = selectedGenre
-    ? data.filter((game) =>
-        game.genres.some((genre) => genre.id === selectedGenre.id)
-      )
-    : data;
+  const filteredGame = filteredGamesByGenre(data || [], selectedGenre?.id ?? 0);
 
   return (
     <>

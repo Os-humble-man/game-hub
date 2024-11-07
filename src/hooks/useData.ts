@@ -18,8 +18,10 @@ const useData = <T>(endPoint:string,requestConfig?:AxiosRequestConfig,deps?:any[
     const [isLoading,setIsLoading] = useState(false);
 
     useEffect(() => {
+      
         const controller = new AbortController();
         setIsLoading(true);
+
       apiClient
         .get<FetchResponse<T>>(endPoint,{signal: controller.signal,...requestConfig})
         .then((response) => {
