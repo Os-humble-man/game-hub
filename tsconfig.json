@@ -1,14 +1,20 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "jsx": "react-jsx",
+    "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "jsx": "react-jsx", 
+    "lib": ["DOM", "ESNext"],
+    "moduleResolution": "Node",
     "skipLibCheck": true,
-    "strict": true,      
-    "esModuleInterop": true, 
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
-  }
+  },
+  "include": ["src"]
 }

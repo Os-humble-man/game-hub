@@ -1,11 +1,7 @@
-import { Game } from "@/hooks/useGames"
+// import { Game } from "@/hooks/useGames"
 
-const filteredGamesByGenre = (games: Game[], selectedGenreId: number) => {
-    return selectedGenreId
-    ? games.filter((game) =>
-        game.genres.some((genre) => genre.id === selectedGenreId)
-      )
-    : games;
-}
+// const filteredGamesByGenre = (games: Game[], selectedGenreId: number) => {
+//     return selectedGenreId
+//     ? games.filter((game) =>
 
-export default filteredGamesByGenre
+// export default filteredGamesByGenre

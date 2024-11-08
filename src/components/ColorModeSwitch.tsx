@@ -1,18 +1,19 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { useColorMode } from "./ui/color-mode";
+import { useTheme } from "@/components/theme-provider";
 
 export default function ColorModeSwitch() {
-  const { toggleColorMode, colorMode } = useColorMode();
+  const { theme, setTheme } = useTheme();
 
   return (
-    <HStack>
-      <Text>Dark Mode</Text>
+    <div className="flex items-center space-x-2">
       <Switch
-        colorPalette="blue"
-        checked={colorMode === "dark"}
-        onChange={toggleColorMode}
+        value={"red-300"}
+        id="toggle-dark-mode"
+        checked={theme === "dark"}
+        onCheckedChange={() => setTheme(theme === "dark" ? "light" : "dark")}
       />
-    </HStack>
+      <Label>Dark Mode</Label>
+    </div>
   );
 }
