@@ -12,35 +12,17 @@ interface Props {
 
 export default function GameGrid({ selectedGenre }: Props) {
   const { error, data, isLoading } = useGames(selectedGenre);
-  const skeletons = [1, 2, 3, 4, 5, 6];
+  const skeletons = Array(12).fill(0);
   // const filteredGame = selectedGenre
   //   ? filteredGamesByGenre(data, selectedGenre.id)
   //   : data;
 
   return (
     <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 :grid-cols-5">
-      {/* {error && <Text padding={5}>{error}</Text>}
-      <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 3, xl: 5 }}
-        padding={10}
-        gap={3}
-      >
-        {isLoading &&
-          skeletons.map((skeleton) => (
-            <GameCardContainer key={skeleton}>
-              <GameCardSkeleton />
-            </GameCardContainer>
-          ))}
-        {filteredGame && filteredGame.length > 0 ? (
-          filteredGame.map((game) => (
-            <GameCardContainer key={game.id}>
-              <GameCard game={game} />
-            </GameCardContainer>
-          ))
-        ) : (
-          <>{!isLoading && <Text>No games found in this genre</Text>}</>
-        )}
-      </SimpleGrid> */}
+      {error && <p>{error}</p>}
+      {isLoading &&
+        skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
+
       {data && data.length > 0 ? (
         data.map((game) => <GameCard game={game} key={game.id} />)
       ) : (
