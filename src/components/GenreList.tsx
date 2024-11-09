@@ -9,32 +9,7 @@ interface Props {
   onSelecteGenre(genre: Genre): void;
   selectedGenre: Genre | null;
 }
-const sidebarItems = [
-  {
-    name: "Home",
-    href: "#",
-    icon: "🏠",
-  },
-  {
-    name: "Analytics",
-    href: "#",
-    icon: "📊",
-    subItems: [
-      { name: "Overview", href: "#" },
-      { name: "Reports", href: "#" },
-    ],
-  },
-  {
-    name: "Products",
-    href: "#",
-    icon: "🛍️",
-  },
-  {
-    name: "Settings",
-    href: "#",
-    icon: "⚙️",
-  },
-];
+
 
 export default function GenreList({ selectedGenre, onSelecteGenre }: Props) {
   const { data, isLoading, error } = useGenres();
@@ -44,30 +19,6 @@ export default function GenreList({ selectedGenre, onSelecteGenre }: Props) {
 
   if (error) return null;
   return (
-    // <List.Root listStyleType="none">
-    //   {data.map((genre) => (
-    //     <ListItem key={genre.id} paddingY={"5px"}>
-    //       {isLoading &&
-    //         skeleton.map((skeleton) => (
-    //           <SkeletonText key={skeleton} paddingY={2} />
-    //         ))}
-    //       <HStack>
-    //         <Image
-    //           boxSize={"32px"}
-    //           borderRadius={8}
-    //           src={getCroppedImageUrl(genre.image_background)}
-    //         />
-    //         <Link
-    //           fontSize={"lg"}
-    //           fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
-    //           onClick={() => onSelecteGenre(genre)}
-    //         >
-    //           {genre.name}
-    //         </Link>
-    //       </HStack>
-    //     </ListItem>
-    //   ))}
-    // </List.Root>
     <div className="hidden md:hidden lg:block w-64 flex-shrink-0 overflow-y-auto transition-all duration-300 ease-in-out">
       <div className="">
         <Button

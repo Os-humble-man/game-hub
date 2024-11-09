@@ -1,8 +1,6 @@
 import GameGrid from "@/components/GameGrid";
 import GenreList from "@/components/GenreList";
 import NavBar from "@/components/NavBar";
-import React from "react";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 export default function Home() {
   return (
