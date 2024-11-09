@@ -1,21 +1,21 @@
-// import { HStack, Image } from "@chakra-ui/react";
 import logo from "@/assets/logo.webp";
-import { Switch } from "@/components/ui/switch";
 import React from "react";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchBar from "./SearchBar";
 
 export default function NavBar() {
   return (
-    <div className="hidden h-full flex-1 flex-col space-y-8 p-8 md:flex">
-      <div className="flex items-center justify-between space-y-2 gap-12">
-        <div>
-          <img src={logo} alt="Logo" className="h-16 w-auto" />
-        </div>
-        <SearchBar/>
-        <div className="flex items-center space-x-2">
-          <ColorModeSwitch />
-        </div>
+    <div className="flex items-center justify-between p-4 md:p-8 bg-white dark:bg-neutral-950">
+      <div className="flex-shrink-0">
+        <img src={logo} alt="Logo" className="h-12 w-auto md:h-16" />
+      </div>
+
+      <div className="hidden md:flex flex-1 mx-4">
+        <SearchBar />
+      </div>
+
+      <div className="flex items-center space-x-2">
+        <ColorModeSwitch />
       </div>
     </div>
   );

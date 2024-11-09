@@ -3,17 +3,14 @@ import getCroppedImageUrl from "@/services/image-url";
 import { Button } from "./ui/button";
 import { ChevronDown, ChevronRight, X } from "lucide-react";
 import { useState } from "react";
-// import { HStack, List, ListItem, Image, Link } from "@chakra-ui/react";
 
 interface Props {
   onSelecteGenre(genre: Genre): void;
   selectedGenre: Genre | null;
 }
 
-
 export default function GenreList({ selectedGenre, onSelecteGenre }: Props) {
   const { data, isLoading, error } = useGenres();
-  const skeleton = [0, 1, 2, 3, 4];
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
@@ -34,6 +31,7 @@ export default function GenreList({ selectedGenre, onSelecteGenre }: Props) {
           <ul className="space-y-2">
             {data.map((item) => (
               <li
+                key={item.id}
                 className={`flex items-center p-2 rounded-lg cursor-pointer ${
                   item.id === selectedGenre?.id ? "font-bold" : ""
                 } hover:underline  transition-colors duration-200`}

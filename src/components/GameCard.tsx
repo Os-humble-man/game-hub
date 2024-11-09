@@ -1,5 +1,4 @@
 import { Game } from "@/hooks/useGames";
-// import { Box, Card, CardBody, Heading, Image, HStack } from "@chakra-ui/react";
 import {
   Card,
   CardContent,
@@ -17,21 +16,19 @@ import getCroppedImageUrl from "@/services/image-url";
 interface Props {
   game: Game;
 }
+
 export default function GameCard({ game }: Props) {
   return (
-    <Card className="w-full max-w-xs flex flex-col cursor-pointer">
+    <Card className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg flex flex-col cursor-pointer shadow-md rounded-lg">
       <div className="relative aspect-video overflow-hidden rounded-t-lg">
         <img
           src={getCroppedImageUrl(game.background_image)}
-          width={400}
-          height={300}
-          className="object-cover pointer-events-none"
-          style={{ aspectRatio: "400/400", objectFit: "cover" }}
+          className="object-cover pointer-events-none w-full"
           alt={`${game.name} image`}
         />
       </div>
       <CardContent className="p-4 flex-1 flex flex-col">
-        <CardTitle className="text-xl font-semibold tracking-wide">
+        <CardTitle className="text-lg md:text-xl font-semibold tracking-wide">
           {game.name}
         </CardTitle>
         <div className="flex justify-between items-center py-2">
