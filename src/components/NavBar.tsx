@@ -3,7 +3,11 @@ import React from "react";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchBar from "./SearchBar";
 
-export default function NavBar() {
+interface Props {
+  onSearchGame: (searchText: string) => void;
+}
+
+export default function NavBar({ onSearchGame }: Props) {
   return (
     <div className="flex items-center justify-between p-4 md:p-8 bg-white dark:bg-neutral-950">
       <div className="flex-shrink-0">
@@ -11,7 +15,7 @@ export default function NavBar() {
       </div>
 
       <div className="hidden md:flex flex-1 mx-4">
-        <SearchBar />
+        <SearchBar onSearchGame={onSearchGame} />
       </div>
 
       <div className="flex items-center space-x-2">

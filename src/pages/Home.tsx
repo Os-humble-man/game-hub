@@ -11,6 +11,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 export default function Home() {
@@ -18,7 +19,11 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <NavBar />
+      <NavBar
+        onSearchGame={(searchText) =>
+          setGameQuery({ ...gameQuery, searchText })
+        }
+      />
       <div className="h-full px-8 space-x-3 flex flex-1 overflow-hidden">
         <GenreList
           selectedGenre={gameQuery.genre}
