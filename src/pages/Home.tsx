@@ -2,6 +2,7 @@ import GameGrid from "@/components/GameGrid";
 import GenreList from "@/components/GenreList";
 import NavBar from "@/components/NavBar";
 import PlatformSelector from "@/components/PlatformSelector";
+import SortSelector from "@/components/SortSelector";
 import { Platform } from "@/hooks/useGames";
 import { Genre } from "@/hooks/useGenres";
 import { useState } from "react";
@@ -9,6 +10,7 @@ import { useState } from "react";
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  sortOrder: string;
 }
 
 export default function Home() {
@@ -25,10 +27,16 @@ export default function Home() {
           }}
         />
         <div className="w-full">
-          <div className=" w-full py-4">
+          <div className=" w-full py-6 flex items-center gap-2">
             <PlatformSelector
               onSelectedPlatform={(platform) =>
                 setGameQuery({ ...gameQuery, platform })
+              }
+            />
+            <SortSelector
+              sortOrder={gameQuery.sortOrder}
+              onSelectSortOrder={(sortOrder) =>
+                setGameQuery({ ...gameQuery, sortOrder })
               }
             />
           </div>
