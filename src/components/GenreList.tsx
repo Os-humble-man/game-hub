@@ -28,6 +28,7 @@ export default function GenreList({ selectedGenre, onSelecteGenre }: Props) {
           <X className="h-6 w-6" />
         </Button>
         <nav>
+          <h1 className="text-3xl font-bold py-2">Genres</h1>
           <ul className="space-y-2">
             {data.map((item) => (
               <li
@@ -39,7 +40,7 @@ export default function GenreList({ selectedGenre, onSelecteGenre }: Props) {
               >
                 <img
                   src={getCroppedImageUrl(item.image_background)}
-                  className="mr-2 h-8 w-8 rounded-md"
+                  className="mr-2 h-8 w-8 rounded-md object-cover"
                 />
                 <span>{item.name}</span>
               </li>

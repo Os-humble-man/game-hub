@@ -28,15 +28,15 @@ export default function GameCard({ game }: Props) {
         />
       </div>
       <CardContent className="p-4 flex-1 flex flex-col">
-        <CardTitle className="text-lg md:text-xl font-semibold tracking-wide">
-          {game.name}
-        </CardTitle>
         <div className="flex justify-between items-center py-2">
           <PlateformIconList
             platforms={game.parent_platforms.map((p) => p.platform)}
           />
           <CriticScore score={game.metacritic} />
         </div>
+        <CardTitle className="text-lg md:text-xl font-semibold tracking-wide">
+          {game.name}
+        </CardTitle>
       </CardContent>
     </Card>
   );
