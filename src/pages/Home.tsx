@@ -6,32 +6,33 @@ import { Platform } from "@/hooks/useGames";
 import { Genre } from "@/hooks/useGenres";
 import { useState } from "react";
 
+export interface GameQuery {
+  genre: Genre | null;
+  platform: Platform | null;
+}
+
 export default function Home() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-    null
-  );
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <div className="flex flex-col min-h-screen">
       <NavBar />
       <div className="h-full px-8 space-x-3 flex flex-1 overflow-hidden">
         <GenreList
-          selectedGenre={selectedGenre}
+          selectedGenre={gameQuery.genre}
           onSelecteGenre={(genre) => {
-            setSelectedGenre(genre);
+            setGameQuery({ ...gameQuery, genre });
           }}
         />
         <div className="w-full">
           <div className=" w-full py-4">
             <PlatformSelector
-              onSelectedPlatform={(platform) => setSelectedPlatform(platform)}
+              onSelectedPlatform={(platform) =>
+                setGameQuery({ ...gameQuery, platform })
+              }
             />
           </div>
-          <GameGrid
-            selectedGenre={selectedGenre}
-            selectedPlatform={selectedPlatform}
-          />
+          <GameGrid gameQuery={gameQuery} />
         </div>
       </div>
     </div>

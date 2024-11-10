@@ -1,5 +1,4 @@
 import { Platform } from "@/hooks/useGames";
-// import { HStack } from "@chakra-ui/react";
 import {
   FaWindows,
   FaPlaystation,
@@ -31,15 +30,6 @@ export default function PlatformIconList({ platforms }: Props) {
 
   return (
     <div className="w-full flex items-center gap-1 flex-wrap">
-      {/* <HStack padding={2}>
-      {platforms.map((platform) => {
-        const IconComponent = iconMap[platform.slug];
-        return IconComponent ? (
-          <IconComponent key={platform.id} color="#4A5568" size="24px" />
-        ) : null;
-      })}
-    </HStack> */}
-
       {platforms.map((platform) => {
         const IconComponent = iconMap[platform.slug];
         return IconComponent ? (
