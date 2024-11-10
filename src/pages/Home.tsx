@@ -1,4 +1,5 @@
 import GameGrid from "@/components/GameGrid";
+import GameHeading from "@/components/GameHeading";
 import GenreList from "@/components/GenreList";
 import NavBar from "@/components/NavBar";
 import PlatformSelector from "@/components/PlatformSelector";
@@ -32,6 +33,7 @@ export default function Home() {
           }}
         />
         <div className="w-full">
+          <GameHeading gameQuery={gameQuery} />
           <div className=" w-full py-6 flex items-center gap-2">
             <PlatformSelector
               onSelectedPlatform={(platform) =>
