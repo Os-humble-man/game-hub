@@ -7,21 +7,32 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import usePlateforms from "@/hooks/usePlateforms";
-// import usePlateforms from "./service/usePlateforms";
+import usePlateforms, { Platform } from "@/hooks/usePlateforms";
 
-export default function PlatformSelector() {
+interface Props {
+  onSelectedPlatform(plateform: Platform): void;
+}
+
+export default function PlatformSelector({ onSelectedPlatform }: Props) {
   const { data, error } = usePlateforms();
 
   if (error) return null;
+
+  const handleValueChange = (value: string) => {
+    const selectedPlatform = data.find((item) => item.id.toString() === value);
+    if (selectedPlatform) {
+      onSelectedPlatform(selectedPlatform);
+    }
+  };
+
   return (
-    <Select>
+    <Select onValueChange={handleValueChange}>
       <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a plateform" />
+        <SelectValue placeholder="Select a platform" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Plateforms</SelectLabel>
+          <SelectLabel>Platforms</SelectLabel>
           {data.map((item) => (
             <SelectItem value={item.id.toString()} key={item.id}>
               {item.name}
