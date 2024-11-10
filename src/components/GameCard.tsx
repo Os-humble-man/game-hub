@@ -1,14 +1,6 @@
 import { Game } from "@/hooks/useGames";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardTitle } from "@/components/ui/card";
 
-import React from "react";
 import PlateformIconList from "./PlateformIconList";
 import { CriticScore } from "./CriticScore";
 import getCroppedImageUrl from "@/services/image-url";

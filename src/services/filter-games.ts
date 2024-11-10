@@ -1,10 +1,9 @@
-import { Game } from "@/hooks/useGames"
+import { Game } from "@/hooks/useGames";
 
 const filteredGamesByGenre = (games: Game[], selectedGenreId: number) => {
-    console.log(selectedGenreId );
-    
-    return selectedGenreId
-    ? games.filter((game) => game.id === selectedGenreId) : games
-}
+  return selectedGenreId
+    ? games.filter((game) => game.id === selectedGenreId)
+    : games;
+};
 
-export default filteredGamesByGenre
+export default filteredGamesByGenre;

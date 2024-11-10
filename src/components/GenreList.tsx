@@ -1,7 +1,7 @@
 import useGenres, { Genre } from "@/hooks/useGenres";
 import getCroppedImageUrl from "@/services/image-url";
 import { Button } from "./ui/button";
-import { ChevronDown, ChevronRight, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useState } from "react";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function GenreList({ selectedGenre, onSelecteGenre }: Props) {
-  const { data, isLoading, error } = useGenres();
+  const { data, error } = useGenres();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 

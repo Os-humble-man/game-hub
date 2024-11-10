@@ -1,4 +1,3 @@
-// import { Badge } from "@chakra-ui/react";
 import { Badge } from "@/components/ui/badge";
 
 interface Props {

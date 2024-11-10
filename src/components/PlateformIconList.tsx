@@ -14,7 +14,6 @@ import { BsGlobe } from "react-icons/bs";
 interface Props {
   platforms: Platform[];
 }
-
 export default function PlatformIconList({ platforms }: Props) {
   const iconMap: { [key: string]: React.ElementType } = {
     pc: FaWindows,

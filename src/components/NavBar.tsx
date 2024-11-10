@@ -13,11 +13,9 @@ export default function NavBar({ onSearchGame }: Props) {
       <div className="flex-shrink-0">
         <img src={logo} alt="Logo" className="h-12 w-auto md:h-16" />
       </div>
-
       <div className="hidden md:flex flex-1 mx-4">
         <SearchBar onSearchGame={onSearchGame} />
       </div>
-
       <div className="flex items-center space-x-2">
         <ColorModeSwitch />
       </div>
