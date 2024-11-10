@@ -1,50 +1,78 @@
-# React + TypeScript + Vite
+# Game Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Game Hub is a video game discovery application built with React and TypeScript. It uses the [RAWG Video Games Database API](https://rawg.io/apidocs) to fetch information about games, allowing users to search, filter, and browse games by genre, platform, and other criteria.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Search**: Quickly find games by name.
+- **Filter by genre and platform**: Easily narrow down game results.
+- **Sort by popularity, release date, and rating**: Find the most popular or highest-rated games.
+- **Responsive design**: Optimized for mobile and desktop devices.
 
-## Expanding the ESLint configuration
+## Screenshots
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+![Game Hub Screenshot](gameHub.png)
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **React** with **TypeScript**: Frontend framework and type-safe development.
+- **RAWG API**: Game data source.
+- **Axios**: For making HTTP requests to the RAWG API.
+- **Tailwind CSS**: For responsive and custom styling.
+- **shadcn/ui**: UI components for rapid and consistent design.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Installation
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+To set up the project locally, follow these steps:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/game-hub.git
+   ```
+2. Clone the repository:
+   ```bash
+   cd game-hub
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Obtain a RAWG API key by signing up at [RAWG.io](RAWG.io) and add it to your environment variables.
+
+5. Create a `.env` file in the root directory and add your API key:
+   ```bash
+   REACT_APP_RAWG_API_KEY=your_api_key_here
+   ```
+6. Start the development server:
+   ```bash
+   npm start
+   ```
+7. Open http://localhost:5173 in your browser to view the app.
+
+## Usage
+- Use the search bar to find specific games.
+- Use the genre and platform filters to narrow down results.
+- Sort games to view by rating, release date, or popularity.
+
+## Project Structure
+The project follows a modular folder structure, with components, pages, and services separated for scalability and easy maintenance:
+
+- components/: Reusable UI components like game cards, filters, and search bar.
+- services/: API functions to handle HTTP requests to the RAWG API.
+- pages/: Main pages of the application.
+  
+## Contributing
+Contributions are welcome! Feel free to open issues or submit pull requests to improve the app.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Acknowledgments
+- Thanks to [Mosh Hamedani](codewithmosh.com) for the excellent course on React and TypeScript that inspired this project.
+- Game data provided by the [RAWG Video Games Database API](rawg.io).
+
+
+
+
+
+
