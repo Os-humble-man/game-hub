@@ -30,7 +30,7 @@ export default function GenreList({ selectedGenre, onSelecteGenre }: Props) {
         <nav>
           <h1 className="text-3xl font-bold py-2">Genres</h1>
           <ul className="space-y-2">
-            {data.map((item) => (
+            {data?.results?.map((item) => (
               <li
                 key={item.id}
                 className={`flex items-center p-2 rounded-lg cursor-pointer ${

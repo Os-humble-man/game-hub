@@ -12,7 +12,9 @@ export default function GameGrid({ gameQuery }: Props) {
   const skeletons = Array(24).fill(0);
 
   if (error)
-    return <p className="col-span-full text-center text-red-500">{error}</p>;
+    return (
+      <p className="col-span-full text-center text-red-500">{error.message}</p>
+    );
 
   return (
     <div className="w-full ">
@@ -20,8 +22,8 @@ export default function GameGrid({ gameQuery }: Props) {
         {isLoading &&
           skeletons.map((_, index) => <GameCardSkeleton key={index} />)}
 
-        {data && data.length > 0 ? (
-          data.map((game) => <GameCard game={game} key={game.id} />)
+        {data && data?.results.length > 0 ? (
+          data?.results.map((game) => <GameCard game={game} key={game.id} />)
         ) : (
           <>
             {!isLoading && error === null && (

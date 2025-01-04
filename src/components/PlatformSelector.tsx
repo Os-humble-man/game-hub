@@ -19,7 +19,9 @@ export default function PlatformSelector({ onSelectedPlatform }: Props) {
   if (error) return null;
 
   const handleValueChange = (value: string) => {
-    const selectedPlatform = data.find((item) => item.id.toString() === value);
+    const selectedPlatform = data?.results?.find(
+      (item) => item.id.toString() === value
+    );
     if (selectedPlatform) {
       onSelectedPlatform(selectedPlatform);
     }
@@ -33,7 +35,8 @@ export default function PlatformSelector({ onSelectedPlatform }: Props) {
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Platforms</SelectLabel>
-          {data.map((item) => (
+
+          {data?.results?.map((item) => (
             <SelectItem value={item.id.toString()} key={item.id}>
               {item.name}
             </SelectItem>
