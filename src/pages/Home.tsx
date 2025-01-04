@@ -4,8 +4,8 @@ import GenreList from "@/components/GenreList";
 import NavBar from "@/components/NavBar";
 import PlatformSelector from "@/components/PlatformSelector";
 import SortSelector from "@/components/SortSelector";
-import { Platform } from "@/hooks/useGames";
 import { Genre } from "@/hooks/useGenres";
+import { Platform } from "@/hooks/usePlateforms";
 import { useState } from "react";
 
 export interface GameQuery {
