@@ -1,9 +1,10 @@
 import useGames from "@/hooks/useGames";
+import { GameQuery } from "@/pages/Home";
+import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
-import { GameQuery } from "@/pages/Home";
-import { Button } from "./ui/button";
-import React from "react";
+import Loader from "./Loader";
 
 interface Props {
   gameQuery: GameQuery;
@@ -25,8 +26,21 @@ export default function GameGrid({ gameQuery }: Props) {
       <p className="col-span-full text-center text-red-500">{error.message}</p>
     );
 
+  const fetchedGamesCount =
+    data?.pages.reduce((acc, page) => acc + page.results.length, 0) || 0;
+
   return (
-    <div className="w-full ">
+    <InfiniteScroll
+      dataLength={fetchedGamesCount}
+      hasMore={!!hasNextPage}
+      next={() => fetchNextPage()}
+      loader={
+        <div className="flex justify-center items-center my-4">
+          <Loader />
+        </div>
+      }
+      style={{ overflow: "visible" }}
+    >
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {isLoading &&
           skeletons.map((_, index) => <GameCardSkeleton key={index} />)}
@@ -49,14 +63,6 @@ export default function GameGrid({ gameQuery }: Props) {
           </>
         )}
       </div>
-
-      <div className="w-full py-3">
-        {hasNextPage && (
-          <Button onClick={() => fetchNextPage()}>
-            {isFetchingNextPage ? "Loading..." : "Load More"}
-          </Button>
-        )}
-      </div>
-    </div>
+    </InfiniteScroll>
   );
 }
