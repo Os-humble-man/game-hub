@@ -4,7 +4,8 @@ const apiKey = import.meta.env.VITE_RAWG_API_KEY;
 export interface FetchResponse<T> {
   count: number;
   results: T[];
-  next:string | null
+  next?:string | null;
+  previous?:string | null
 }
 
 
