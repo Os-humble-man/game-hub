@@ -2,13 +2,22 @@ import useGames from "@/hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import { GameQuery } from "@/pages/Home";
+import { Button } from "./ui/button";
+import React from "react";
 
 interface Props {
   gameQuery: GameQuery;
 }
 
 export default function GameGrid({ gameQuery }: Props) {
-  const { error, data, isLoading } = useGames(gameQuery);
+  const {
+    error,
+    data,
+    isLoading,
+    isFetchingNextPage,
+    fetchNextPage,
+    hasNextPage,
+  } = useGames(gameQuery);
   const skeletons = Array(24).fill(0);
 
   if (error)
@@ -22,8 +31,14 @@ export default function GameGrid({ gameQuery }: Props) {
         {isLoading &&
           skeletons.map((_, index) => <GameCardSkeleton key={index} />)}
 
-        {data && data?.results.length > 0 ? (
-          data?.results.map((game) => <GameCard game={game} key={game.id} />)
+        {data && data?.pages.length > 0 ? (
+          data?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page.results.map((game) => (
+                <GameCard game={game} key={game.id} />
+              ))}
+            </React.Fragment>
+          ))
         ) : (
           <>
             {!isLoading && error === null && (
@@ -32,6 +47,14 @@ export default function GameGrid({ gameQuery }: Props) {
               </p>
             )}
           </>
+        )}
+      </div>
+
+      <div className="w-full py-3">
+        {hasNextPage && (
+          <Button onClick={() => fetchNextPage()}>
+            {isFetchingNextPage ? "Loading..." : "Load More"}
+          </Button>
         )}
       </div>
     </div>
